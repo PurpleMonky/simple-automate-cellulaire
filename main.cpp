@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 using namespace std;
-/*Regle de majorité
+/*Regle de majoritÃ©
 0 000 = 0
 1 001 = 0
 2 010 = 0
@@ -13,7 +13,7 @@ using namespace std;
 7 111 = 1
 */
 
-//Fonction testant les cases soumis a des règle
+//Fonction testant les cases soumis a des rÃ¨gle
 //Renvoyant un vecteur
 vector<int> test(vector <int> ligne, vector <int> rule)
 {
@@ -24,7 +24,7 @@ vector<int> test(vector <int> ligne, vector <int> rule)
 
 	for (int i{ 0 }; i < ligne.size(); i++)
 	{
-		//On prend la valeur des trois cases (%ligne.size() pour éviter le Out_Of_Bounds)
+		//On prend la valeur des trois cases (%ligne.size() pour Ã©viter le Out_Of_Bounds)
 		index = ligne[(i - 1) % ligne.size()] * 4;
 		index += ligne[i] * 2;
 		index += ligne[(i + 1) % ligne.size()];
