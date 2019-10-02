@@ -17,7 +17,7 @@ using namespace std;
 */
 //2^8 = 256 regle possible
 
-//test des valeurs d'un automate cyclique
+//test des valeurs d'un automate non-cyclique
 
 //Fonction testant les cases soumis a des règle
 //Renvoyant un vecteur
@@ -34,7 +34,7 @@ vector<int> test(vector <int> ligne, vector <int> rule)
 		//On prend la valeur des trois cases (%ligne.size() pour éviter le Out_Of_Bounds)
 		if (i == 0)
 		{
-			index = ligne.back() * 4;
+			index = 0 * 4;
 		}
 		else
 		{
@@ -45,7 +45,7 @@ vector<int> test(vector <int> ligne, vector <int> rule)
 
 		if (i == ligne.size())
 		{
-			index += ligne.front();
+			index += 0;
 		}
 		else
 		{
@@ -79,9 +79,11 @@ vector <int> fillit(int tour, int taille)
 	}
 	if(temp.size() != taille)
 	{
-		temp.insert(temp.end(), taille - temp.size(),0);
+		temp.insert(temp.begin(), taille - temp.size(),0);
 	}
+	
 	reverse(temp.begin(),temp.end());
+	
 	return temp;
 }
 
@@ -104,18 +106,12 @@ int main()
 
 		allvector = {};
 
-		//cout << i + 1 << "/" << taille << endl;
-		
+		cout << i + 1 << "/" << taille << endl;
+
 		ligne = fillit(i, ligne.size());
 		temp = test(ligne, majorite);
-		
-			for (auto i : ligne)
-			{
-				cout << i << " ";		
-			}
-			
-			cout << endl;
-		for (int j{ 0 }; j < 8; j++)
+
+		for (int j{ 0 }; j < 15; j++)
 		{
 			//On fait passer les cycles
 			temp = test(temp, majorite);
@@ -130,7 +126,6 @@ int main()
 		}
 		else
 		{
-			cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
 			vectorstat.push_back(ligne);
 		}
 
@@ -138,7 +133,7 @@ int main()
 
 	//CONCLUSION
 	cout << "sur " << taille << " automates regis par la regle de majorité\n" << stat << "/" << taille << endl;
-	cout << " montre des comportement stationaire." << endl;
+	cout << "montre des comportement stationaire." << endl;
 	cout << "Valeur initiale ne montrent pas de comportement stationaire:" << endl;
 	for (auto i : vectorstat)
 	{

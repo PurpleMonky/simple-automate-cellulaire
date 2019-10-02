@@ -1,71 +1,61 @@
 #include <iostream>
 #include <vector>
-#include <string>
+
 using namespace std;
-/*Regle de majorité
-0 000 = 0
-1 001 = 0
-2 010 = 0
-3 011 = 1
-4 100 = 0
-5 101 = 1
-6 110 = 1
-7 111 = 1
-*/
 
-//Fonction testant les cases soumis a des règle
-//Renvoyant un vecteur
-vector<int> test(vector <int> ligne, vector <int> rule)
-{
-	//Variables
-	vector <int> temp{};
-	temp.assign(ligne.size(), 0);
-	int index{ 0 };
 
-	for (int i{ 0 }; i < ligne.size(); i++)
-	{
-		//On prend la valeur des trois cases (%ligne.size() pour éviter le Out_Of_Bounds)
-		index = ligne[(i - 1) % ligne.size()] * 4;
-		index += ligne[i] * 2;
-		index += ligne[(i + 1) % ligne.size()];
-		//^ On le convertie en base10 
-		temp[i] = rule[index];
-
-	}
-	return temp;
-}
-void readit(vector <int> temp)
-{
-	//Fonctions simplifiant la lecture d'un vecteur
-	for (auto n : temp)
-	{
-		cout << n << " ";
-	}
-}
 
 int main()
 {
-	//Variables
-	vector <int> ligne{ 1,0,1,0,1,0,1,0,1,0,1,0,1 };
-	vector <int> majorite{ 0,0,0,1,0,1,1,1 };
-
-	vector <int> temp{};
-
-	
-	readit(ligne);
-	cout << endl;
-	//Premier Envoie de la fonction
-	temp = test(ligne, majorite);
-	readit(temp);
-	cout << endl;
-	for (int i{ 0 }; i < 5; i++)
+	string chiffre{"CHIFFRE DE CESAR"};
+	string temp{""};
+	string temp2{""};
+	int val{0};
+	int cle{50};
+	for(int i{0}; i < chiffre.size(); i++)
 	{
-		//Deuxieme envoie dans une boucle
-		temp = test(temp, majorite);
-
-		//lecture dans une boucle
-		readit(temp);
-		cout <<"\n" << endl;
+		if((chiffre[i] + cle) > 126)
+		{
+			val = ((chiffre[i] + cle) % 127) + 32;
+		temp.push_back(char(val));
+		}
+		else
+		{
+			temp.push_back(char(chiffre[i] + cle));
+		}
 	}
-	return 0;
+	cout << chiffre << endl;
+	cout << temp << endl;
+	
+	for(int i{0}; i < temp.size(); i++)
+	{
+		if((temp[i] - cle) < 32)
+		{
+			val = (95 + (temp[i] - cle));
+			while(val < 32)
+			{
+			val = (95 + (val));
+			}
+			if(val < 0)
+			{
+			val = val * -1;
+			temp2.push_back(char(val));
+			}
+			else
+			{
+			temp2.push_back(char(val));
+			}
+		}
+		else
+		{
+			temp2.push_back(char(temp[i] - cle));
+		}
+	}
+	cout << temp2 << endl;
+	for(auto n: temp2)
+	{
+		cout << n + 0 << " ";
+	}
+	
+return 0;
 }

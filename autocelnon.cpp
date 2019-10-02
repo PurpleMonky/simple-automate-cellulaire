@@ -13,16 +13,8 @@ using namespace std;
 6 110 = 1
 7 111 = 1 
 */
-/*deplacement
-0 000 = 0
-1 001 = 0
-2 010 = 0
-3 011 = 1
-4 100 = 1
-5 101 = 1
-6 110 = 0
-7 111 = 1 
-*/
+
+//Automate celluraie non cyclique
 
 
 //Fonction testant les cases soumis a des règle
@@ -39,7 +31,7 @@ vector<int> test(vector <int> ligne, vector <int> rule)
 		//On prend la valeur des trois cases (%ligne.size() pour éviter le Out_Of_Bounds)
 		if(i == 0)
 		{
-			index = ligne.back() * 4;
+			index = 0 * 4;
 		}
 		else
 		{
@@ -50,7 +42,7 @@ vector<int> test(vector <int> ligne, vector <int> rule)
 		
 		if(i == ligne.size())
 		{
-			index += ligne.front();
+			index += 0;
 		}
 		else
 		{
@@ -75,7 +67,7 @@ void readit(vector <int> temp)
 int main()
 {
 	//Variables
-	vector <int> ligne{ 0,1,1,1,0,1,0,0};
+	vector <int> ligne{ 1,0,1,0,1,0,1,0};
 	vector <int> majorite{ 0,0,0,1,0,1,1,1 };
 	vector <int> deplacement{ 0,0,0,1,1,1,0,1 };
 	vector <vector <int> > allvector;
