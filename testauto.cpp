@@ -123,14 +123,13 @@ int main()
 
 		}
 		//Si les deux derniers sont égaux, alors c'est forcement stationaire
-		if(allvector[allvector.size() - 1] == allvector[allvector.size() - 2])
+   		if (equal(allvector[allvector.size() - 1].begin(), allvector[allvector.size() - 1].end(), allvector[allvector.size() - 2].begin()))
 		{
 
 			stat++;
 		}
 		else
 		{
-			cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << endl;
 			vectorstat.push_back(ligne);
 		}
 
