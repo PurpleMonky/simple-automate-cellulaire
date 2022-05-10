@@ -1,3 +1,2 @@
 # simple-automate-cellulaire
-Un simple automate céllulaire à deux dimension fait en c++
-ce sont juste des petit tests personel
+Un simple automate cellulaire à deux dimensions fait en c++, ce sont juste des petit tests personnel
